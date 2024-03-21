@@ -10,7 +10,7 @@ To enhance this template locally
 To test locally simply run this command from the root directory
 
 ```console
- dotnet new --install . --force
+ dotnet new --install ./src --force
 ```
 
 ## Running In VS Code
