@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <Target Name="BuildDev" BeforeTargets="Build" Condition="'$(Configuration)'=='DEBUG'">
+    <CallTarget Targets="npmInstall" />
+    <Exec Command="npm run vue:build" />
+    <Exec Command="npm run core:build-css-dev" />
+  </Target>
+
+  <Target Name="BuildProd" BeforeTargets="Build" Condition="'$(Configuration)'!='DEBUG'">
+    <Exec Command="npm run core:build-css" />
+  </Target>
+
+  <Target Name="npmInstall" >
+    <Exec Command="npm install" Condition="!Exists('$(ProjectDir)node_modules')" />
+  </Target>
+
+	<ItemGroup>
+		<!-- extends watching group to include *.js files -->
+		<Watch Include="**\*.js;**\*.vue;**\*.css" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*" />
+	</ItemGroup>
+
+
+</Project>

@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}\\CodeEndeavors.ASPNETVueMPA.Web\\CodeEndeavors.ASPNETVueMPA.Web.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary",
+                "/property:WarningLevel=0"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "dependsOn": ["csharp-watch", "vue-watch", ""]
+        },
+        {
+            "label": "csharp-watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}\\CodeEndeavors.ASPNETVueMPA.Web\\CodeEndeavors.ASPNETVueMPA.Web.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+        },
+        {
+            "label": "vue-watch",
+            "command": "npm",
+            "type": "shell",
+            "args": [
+                "run",
+                "vue:build-watch",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\CodeEndeavors.ASPNETVueMPA.Web"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+/* semantic color variables for this project */
+:root {
+  --bg-primary: #dfdfdf;
+  --bg-secondary: #afafaf;
+  --bg-tertiary: #efefef;
+  --bg-quaternary: #bababa;
+  --bg-empty: white;
+  --bg-highlight: #d00000;
+
+  --text-primary: black;
+  --text-highlight: #ac0000;
+  --text-secondary: #810000;
+
+}
+
+.myapp.darkmode {
+  --bg-primary: #444;
+  --bg-secondary: #333;
+  --bg-tertiary: #222;
+  --bg-quaternary: #4a4a4a;
+  --bg-empty: #222;
+
+  --text-primary: #ddd;
+  --text-secondary: #d10000;
+}

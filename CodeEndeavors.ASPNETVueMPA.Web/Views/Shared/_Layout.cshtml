@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myapp</title>
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />  @* CSS from static/css (esbuild compile)  *@
+    <link rel="stylesheet" href="~/js/style.css" asp-append-version="true" />      @* CSS from vue components (vite compile) *@
+    <script src="~/js/vue.global.prod.js"></script>
+    <script src="~/js/myapp.umd.js" asp-append-version="true"></script>
+    <script>
+		(() => {    //internalize all variables
+            const { SunIcon, MoonIcon } = myapp.icons;
+            const { ProgressBar } = myapp.components;
+			const { ref, watch } = Vue;
+
+            const layoutApp = {
+                components: { SunIcon, MoonIcon, ProgressBar },
+                setup() {
+                    const darkMode = ref(false);
+                    const menuItems = [ 
+                        { title: 'Home', url: '/'}, 
+                        @*#if 
+                        (IncludeSampleCRUD) { title: 'Sample CRUD', url: '/customers'} 
+                        #endif*@
+                    ];
+
+                    const toggleDarkMode = () => {
+                        darkMode.value = !darkMode.value;
+                    }
+
+                    return {
+                        menuItems,
+                        darkMode,
+                        toggleDarkMode,
+                        loading: myapp.loading
+                    }   
+                }
+            }
+
+            myapp.initApp(layoutApp);
+
+        })();       //internalize all variables
+    </script>
+</head>
+<body id="app">
+    <div :class="{darkmode: darkMode}" class="myapp">
+        <header>
+            @* nav bar could be own component, but left here to demonstrate interactivity with razor cshtml pages  *@
+            <nav>
+                <div class="myapp-menu">
+                    <img src="~/logo.png" class="myapp-logo" />
+                    <template v-for="item in menuItems">
+                        <a :href="item.url">{{item.title}}</a>
+                    </template>
+                </div>
+                <sun-icon v-if="!darkMode" class="myapp-icon" style="cursor: pointer" @@click="toggleDarkMode"></sun-icon>
+                <moon-icon v-if="darkMode" class="myapp-icon" style="cursor: pointer" @@click="toggleDarkMode"></moon-icon>
+            </nav>
+        </header>
+        <main role="main">
+            <progress-bar v-if="loading"></progress-bar>    @* normal vue component (imported in static\vue\myapp.js) *@
+            @RenderBody()
+        </main>
+        <footer>
+        </footer>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+    <script>
+    (() => {
+        myapp.mount('#app');
+    })();
+    </script>
+
+</html>

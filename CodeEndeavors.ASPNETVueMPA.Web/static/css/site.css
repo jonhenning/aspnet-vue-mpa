@@ -1,0 +1,72 @@
+@import './base.css';
+@import './app.css';
+@import url('vue-toastification/dist/index.css');
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+ background: #f1f1f1;
+ border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+ background: #bec4c4;
+ border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+html, body {
+  margin: 0;
+  height: 100%; /* can also use viewport units (height: 100vh) */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a, a:visited {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-highlight);
+}
+
+nav {
+  background: var(--bg-primary);
+  padding: 10px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+nav a, nav a:visited {
+  margin: 0 10px 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+nav a svg {
+  margin-right: 5px;
+}
+
+nav a:hover {
+  color: var(--text-secondary);
+}
+
+main {
+  flex: 1; /* takes the remaining height of the "container" div */
+  overflow: auto; /* to scroll just the "main" div */
+  background-color: var(--bg-empty);
+  color: var(--text-primary);
+  padding: 10px;
+}

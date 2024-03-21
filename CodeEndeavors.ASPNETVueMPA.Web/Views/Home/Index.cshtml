@@ -1,0 +1,46 @@
+﻿@{
+    var COMPONENT_NAME = "home-page";
+    var componentId = Context.GetId(COMPONENT_NAME);
+}
+
+<template id="@componentId">
+    <div>
+        <h1>Welcome - Home Page</h1>
+        
+        <div class="myapp-callout">
+            A Razor page can contain normal vue code as well, mixing both types of syntax.  Just remember to escape the vue @@ with a @@@@.
+        </div>
+        
+        <input type="text" v-model="sampleText" />
+        {{ sampleText }}
+
+        <counter style="margin-top: 50px;"></counter>
+    </div>
+</template>
+@section Scripts {
+    <script>
+        (() => {
+            const { ref, reactive, onMounted, computed } = Vue;
+            const { Counter } = myapp.components;
+            const { } = myapp.icons;
+
+            myapp.registerComponent('@COMPONENT_NAME',
+                document.getElementById('@componentId'),
+                {
+                    components: { Counter },
+                    setup() {
+                        const sampleText = ref('Reactive Text');
+                        onMounted(() => {
+                            console.log('mounted');
+                        });
+
+                        return  {
+                            sampleText
+                        }
+                    }
+                    
+                }
+            );
+        })();
+    </script>
+}

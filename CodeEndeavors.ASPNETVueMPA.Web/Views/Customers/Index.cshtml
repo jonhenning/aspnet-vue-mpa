@@ -1,0 +1,61 @@
+﻿@{
+    var COMPONENT_NAME = "customer-search";
+    var componentId = Context.GetId(COMPONENT_NAME);
+}
+
+<template id="@componentId">
+
+    <div class="myapp-callout">
+        Sample in-memory database CRUD operations mixing vue with razor.
+    </div>
+
+    <div style="display: flex; justify-content: end;">
+        <a href="/customer" class="myapp-button">New</a>
+    </div>
+    <table v-if="customers" class="myapp-table">
+        <thead>
+            <th></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </thead>
+        <tr v-for="customer in customers">
+            <td style="width: 30px; text-align: center"><a :href="`/customer/${customer.id}`"><pencil-square-icon class="myapp-icon"></pencil-square-icon></a></td>
+            <td>{{ customer.firstName }}</td>
+            <td>{{ customer.lastName }}</td>
+        </tr>
+    </table>
+    <div v-else>Please Wait</div>
+</template>
+
+@section Scripts {
+<script>
+    (() => {
+        const { ref } = Vue;
+        const { } = myapp.components;
+        const { PencilSquareIcon } = myapp.icons;
+
+        myapp.registerComponent('@COMPONENT_NAME',
+            document.getElementById('@componentId'),
+            {
+                components: { PencilSquareIcon },
+                setup() {
+                    const customers = ref(null);
+
+
+                    const refreshCustomers = async () => {
+                        var results = await myapp.ajax({url: '~/Customer/GetCustomers' });
+                        customers.value = results;
+                    }
+
+                    refreshCustomers();
+
+                    return  {
+                        customers
+                    }
+                }
+                
+            }
+        );
+    })();
+</script>
+}

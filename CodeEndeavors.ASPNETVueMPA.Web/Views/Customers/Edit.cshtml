@@ -1,0 +1,72 @@
+﻿@{
+    var COMPONENT_NAME = "customer-edit";
+    var componentId = Context.GetId(COMPONENT_NAME);
+    int? customerId = ViewBag.CustomerId;
+}
+
+<template id="@componentId">
+
+    <div class="myapp-callout">
+        Using Vue's 2-way binding (v-model) to our customerData Model.
+    </div>
+
+    <a href="/customers"><arrow-left-icon class="myapp-icon"></arrow-left-icon></a>
+    <div v-if="customerData" class="myapp-form" @@keydown.alt.s="save">
+        <div class="myapp-form-entry">
+            <label>First Name: </label>
+            <input v-model="customerData.firstName" />
+        </div>
+        <div class="myapp-form-entry">
+            <label>Last Name: </label>
+            <input v-model="customerData.lastName" />
+        </div>
+        <div class="myapp-form-buttons">
+            <a class="myapp-button" @@click="save">Save</a>
+            <a class="myapp-button" href="/customers">Cancel</a>
+        </div>
+    </div>
+    <div v-else>Please Wait...</div>
+</template>
+@section Scripts {
+    <script>
+        (() => {
+            const { ref } = Vue;
+            const { } = myapp.components;
+            const { ArrowLeftIcon } = myapp.icons;
+
+            myapp.registerComponent('@COMPONENT_NAME',
+                document.getElementById('@componentId'),
+                {
+                    components: { ArrowLeftIcon },
+                    setup() {
+                        const customerData = ref(null);
+                        const customerId = @(customerId.HasValue ? customerId : "null");
+
+                        const refreshCustomer = async () => {
+                            var results = await myapp.ajax({url: `~/Customer/GetCustomer/${customerId}`});
+                            customerData.value = results;
+                        }
+
+                        const save = async () => {
+                            var results = await myapp.ajax({url: '~/Customer/Save/', body: customerData.value });
+                            customerData.value = results;
+                            myapp.addMessage('Data has been saved', 'success');
+                        }
+
+                        if (customerId == null) {
+                            customerData.value = { id: null, firstName: null, lastName: null };
+                        } else {
+                            refreshCustomer()
+                        }
+
+                        return  {
+                            customerData,
+                            save, 
+                        }
+                    }
+                    
+                }
+            );
+        })();
+    </script>
+}

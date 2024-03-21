@@ -1,0 +1,104 @@
+.myapp {
+  display: flex;          /* displays flex-items (children) inline */
+  flex-direction: column; /* stacks them vertically */
+  height: 100%;           /* needs to take the parents height, alternative: body {display: flex} */
+}
+
+.myapp-icon {
+  height: 18px;
+  width: 18px;
+}
+
+.myapp-logo {
+  margin: 0;
+  margin-right: 10px;
+  height: 30px;
+}
+
+.myapp-form {
+  width: 300px;
+  border: 1px solid var(--bg-secondary);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.myapp-form label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.myapp-form .myapp-form-entry {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}  
+
+.myapp-form .myapp-form-buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.myapp-form .myapp-form-entry input {
+  padding: 5px;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+.myapp-button {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 4px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px;
+  display: inline-block;
+  font-weight: 400;
+}
+
+.myapp-button:hover {
+  background-color: var(--bg-tertiary);
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.24);
+}
+
+.myapp-menu {
+  display: flex;
+}
+
+.myapp-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.myapp-table a {
+  color: var(--text-primary)
+}
+
+.myapp-table td, .myapp-table th {
+  border: 1px solid var(--bg-primary);
+  padding: 8px;
+}
+
+.myapp-table tr:nth-child(even){background-color: var(--bg-tertiary);}
+
+.myapp-table tr:hover {background-color: var(--bg-primary);}
+
+.myapp-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.myapp-callout {
+  color: var(--text-primary);
+  padding: 10px;
+  margin: 10px 0 10px 0;
+  border-left: 10px solid var(--text-secondary);
+  border-top: 1px solid var(--bg-secondary);
+  border-bottom: 1px solid var(--bg-secondary);
+  border-right: 1px solid var(--bg-secondary);
+}
