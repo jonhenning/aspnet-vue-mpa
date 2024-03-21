@@ -3,6 +3,8 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+name: 1.0.$(Rev:r)
+
 trigger:
 - master
 
@@ -13,18 +15,14 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  PackageVersion: '1.0.$(Build.BuildID).0'
-
 
 steps:
-- script: echo '$(Build.BuildID)'
-- script: echo '$(PackageVersion)'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
     packagesToPack: 'publish.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'PackageVersion'
+    versioningScheme: 'byBuildNumber'
 
 - task: NuGetCommand@2
   inputs:
