@@ -17,6 +17,8 @@ variables:
 
 
 steps:
+- script: echo '$(Build.BuildNumber)'
+- script: echo '$(PackageVersion)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
