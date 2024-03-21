@@ -13,11 +13,11 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  PackageVersion: '1.0.$(Build.BuildNumber).0'
+  PackageVersion: '1.0.$(Build.BuildID).0'
 
 
 steps:
-- script: echo '$(Build.BuildNumber)'
+- script: echo '$(Build.BuildID)'
 - script: echo '$(PackageVersion)'
 - task: DotNetCoreCLI@2
   inputs:
