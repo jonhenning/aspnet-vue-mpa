@@ -26,3 +26,8 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'PackageVersion'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'nupkg'
+    publishLocation: 'Container'
