@@ -24,10 +24,16 @@ steps:
     packagesToPack: 'publish.csproj'
     versioningScheme: 'byBuildNumber'
 
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: 'ac758a19-2517-4b8d-9d83-43bd02106e50'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'ac758a19-2517-4b8d-9d83-43bd02106e50'
-
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'Nuget.org'
