@@ -5,8 +5,8 @@
 
 name: 1.0.$(Rev:r)
 
-trigger:
-- master
+# trigger:
+# - master
 
 pool:
   vmImage: 'windows-latest'
@@ -18,16 +18,29 @@ variables:
 
 steps:
 
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs:
-    command: 'pack'
-    packagesToPack: 'publish.csproj'
-    versioningScheme: 'byBuildNumber'
+    command: pack
+    packagesToPack: 'publish.nuspec'
+    versioningScheme: byEnvVar
+    versionEnvVar: 'PackageVersion'
+
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'pack'
+#     packagesToPack: 'publish.csproj'
+#     versioningScheme: 'byBuildNumber'
+
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: 'ac758a19-2517-4b8d-9d83-43bd02106e50'
 
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'ac758a19-2517-4b8d-9d83-43bd02106e50'
-
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'Nuget.org'
