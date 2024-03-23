@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>codeendeavors-aspnetvuempa</id>
+    <version>1.0.0</version>
+    <authors>Code Endeavors</authors>
+    <projectUrl>https://github.com/jonhenning/aspnet-vue-mpa</projectUrl>
+    <iconUrl>https://secure.gravatar.com/avatar/821c48cbda08c0ec4b23222a419905ac?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png</iconUrl>
+    <title>Code Endeavors Vue ASP.NET Multi-Page Application Template</title>
+    <description>The purpose of this template is to allow normal ASP.NET MVC application development to be easily intermixed with the power of a reactive UI using Vue.</description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <tags>web mvc vue vite</tags>
+    <language>en-US</language>
+	  <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="src\**\*" exclude=".\bin\**" />
+  </files>
+</package>
