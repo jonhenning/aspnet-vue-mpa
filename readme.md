@@ -4,8 +4,7 @@
 The purpose of this template is to allow normal ASP.NET MVC application development to be easily intermixed with the power of a reactive UI using Vue. 
 
 # Background
-I have been involved developing front end frameworks for multiple Content Managements Systems over the last couple decades.  
-DotNetNuke was the beginning of this, where I was in charge of developing its [ClientAPI](https://dotnetnuke.nl/LinkClick.aspx?fileticket=LktZ8e1P3tA%3D&tabid=600&portalid=16&mid=1379&forcedownload=true).
+I have been involved developing front end frameworks for multiple Content Managements Systems over the last couple decades. DotNetNuke was the beginning of this, where I was in charge of developing its [ClientAPI](https://dotnetnuke.nl/LinkClick.aspx?fileticket=LktZ8e1P3tA%3D&tabid=600&portalid=16&mid=1379&forcedownload=true).
 A couple years after this I created my own open source CMS called [Videre](https://www.viderecms.net/) where I introduced the concept of [Client Side Presenters](https://www.viderecms.net/develop/client-side-presenters.html#overview).  Each of these efforts was about allowing a Microsoft back end web framework (ASP.NET) efficiently interact with a rich user interface.  This template represents my latest approach to providing a solution to developing a multi-page application with a reactive front end.
 
 # Quick Start VSCode
@@ -30,10 +29,6 @@ Do you want to run this action [Y(yes)|N(no)]?
 *If you decide not to run this script you will need to navigate to your myvueapp.Web folder and manually run a npm install.*
 
 Once installed simply open up the folder you installed the files to in VSCode and hit F5.
-
-# Quick Start Visual Studio
-...
-
 
 # Anatomy of a Page
 
