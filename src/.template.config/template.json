@@ -1,6 +1,6 @@
 {
     "$schema": "http://json.schemastore.org/template",
-    "author": "Jon Henning",
+    "author": "Code Endeavors",
     "classifications": [ "Web", "MVC", "vue" ],
     "identity": "CodeEndeavors.ASPNETVueMPA.Template",
     "name": "Vue ASP.NET Multi-Page Application Template",
