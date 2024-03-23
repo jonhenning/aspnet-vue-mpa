@@ -22,8 +22,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: 'publish.nuspec'
-    versioningScheme: byEnvVar
-    versionEnvVar: 'PackageVersion'
+    versioningScheme: byBuildNumber
 
 # - task: DotNetCoreCLI@2
 #   inputs:
