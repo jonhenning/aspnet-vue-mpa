@@ -13,12 +13,12 @@ export default defineConfig({
       name: 'myapp',
       fileName: (format) => `myapp.${format}.js`,
       formats: ['umd'],
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          globals: {
-            vue: 'Vue'
-          }
+    },
+    rollupOptions: {
+      external: ['vue'],
+      output: {
+        globals: {
+          vue: 'Vue'
         }
       }
     }
