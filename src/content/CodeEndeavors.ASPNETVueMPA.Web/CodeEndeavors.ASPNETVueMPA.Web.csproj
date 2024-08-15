@@ -13,6 +13,8 @@
   </Target>
 
   <Target Name="BuildProd" BeforeTargets="Build" Condition="'$(Configuration)'!='DEBUG'">
+    <CallTarget Targets="npmInstall" />
+    <Exec Command="npm run vue:build" />
     <Exec Command="npm run core:build-css" />
   </Target>
 
